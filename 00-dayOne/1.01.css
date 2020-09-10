@@ -1,0 +1,43 @@
+body{
+    background-color: #d0d0d0 /*hex decimal*/;
+    padding: 1em;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#mainTitle {
+    text-align: center;
+}
+
+.main {
+    border-style: solid;  
+    border: thick, black;
+    border-radius: 1em;
+    background-color: grey;
+}
+
+#title {
+    color: lightgreen;
+    text-align: center;
+}
+
+h3  {
+    color: blue;
+}
+
+p   {
+    color: red;
+}
+
+.truthlie {  
+    border-style: solid;  
+    border: thick, black;
+    border-radius: 1em;  
+    background-color: lightgrey;
+    text-align: center;
+    padding: 1em;
+}
+
+.align {
+    display: flex;
+    justify-content: space-evenly;
+}

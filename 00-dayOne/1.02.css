@@ -1,0 +1,20 @@
+.style h2 {
+    text-align: center;
+}
+
+.formatTable {
+    background-color: lightskyblue;
+    border-collapse: collapse;
+    width: 60%;
+    height: 60%;
+    margin: auto;
+    text-align: center;
+}
+
+.formatTable th, tr, td {
+    border: 1px solid black;
+}
+
+.italic {
+    font-style: italic;
+}
