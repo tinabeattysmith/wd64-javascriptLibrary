@@ -1,0 +1,243 @@
+.wrapper {
+   background-size: auto;
+   background-color: lightpink;
+}
+
+.face {
+    width: 150px;
+    height: 140px;
+    border: solid 1px gray;
+    border-radius: 0 0 50px 50px;
+    margin: 16px;
+    position: relative;
+    top: 200px;
+    left: 400px;
+    background-color: gray;
+}
+
+.leftEye {
+    width: 7px;
+    height: 7px;
+    border: solid 5px white;
+    z-index: 1;
+    position: relative;
+    left: 50px;
+    top: 40px;
+    background-color: white;
+}
+
+.rightEye {
+    width: 7px;
+    height: 7px;
+    border: solid 5px white;
+    z-index: 1;
+    position: relative;
+    left: 100px;
+    top: 22px;
+    background-color: white;
+}
+
+#innerLeft {
+    width: 4px;
+    height: 4px;
+    border: solid 1px black;
+    border-radius: 2px;
+    position: relative;
+    top: 1px;
+    left: 2px;
+    background-color: black;
+}
+
+#innerRight {
+    width: 4px;
+    height: 4px;
+    border: solid 1px black;
+    border-radius: 2px;
+    position: relative;
+    top: 1px;
+    left: 4px;
+    background-color: black;
+}
+
+.nose {
+    width: 6px;
+    height: 4px;
+    border-radius: 5px;
+    border: solid 5px magenta;
+    z-index: 2;
+    position: relative;
+    left: 77px;
+    top: 35px;
+    background-color: magenta;
+}
+
+
+#rightSide {
+    width: 40px; 
+    height: 25px;  
+    border:solid 3px black;
+    border-color:transparent transparent transparent black;
+    border-radius: 0px 0px 0px 50px;
+    z-index: 2;
+    position: relative;
+    left: 84px;
+    top: 35px;
+}
+
+#leftSide {
+    width: 40px; 
+    height: 25px;  
+    border:solid 3px black;
+    border-color: transparent black transparent transparent;
+    border-radius: 50px 0px 50px 0px;
+    z-index: 2;
+    position: relative;
+    left: 40px;
+    top: 5px;
+}
+
+.tongue {
+    width: 12px;
+    height: 19px;
+    border-radius: 5px;
+    border:  outset 1px gray;
+    border-color: transparent gray gray transparent;
+    z-index: 1;
+    position: relative;
+    left: 78px;
+    top: -15px;
+    background-color: pink;
+}
+
+.leftEar {
+    width: 1px;
+    height: 10px;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 75px solid gray;
+    position: relative;
+    top: -40px;
+    left: 415px;
+}
+
+#innerLeftEar {
+    width: 1px;
+    height: 1px;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid wheat;
+    z-index: 1;
+    position: relative;
+    top: 40px;
+    left: -15px;
+}
+
+.rightEar {
+    width: 1px;
+    height: 10px;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 75px solid gray;
+    position: relative;
+    z-index: 1;
+    bottom: 125px;
+    left: 497px;
+}
+
+#innerRightEar {
+    width: 1px;
+    height: 1px;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid wheat;
+    z-index: 1;
+    position: relative;
+    top: 40px;
+    left: -15px;
+}
+
+.catBody {
+    width: 105px;
+    height: 200px;
+    border-radius: 50px;
+    border: solid 5px gray;
+    z-index: 2;
+    position: relative;
+    left: 433px;
+    top: 5px;
+    background-color: gray;
+}
+
+.belly {
+    width: 50px;
+    height: 130px;
+    border-radius: 40px;
+    border: solid 5px lightgray;
+    z-index: 1;
+    position: relative;
+    left: 30px;
+    top: 35px;
+    background-color: lightgray;
+}
+
+.arm1 {
+    width: 6px;
+    height: 30px;
+    border: solid 5px white;
+    border-radius: 5px;
+    z-index: 2;
+    position: relative;
+    left: 93px;
+    top: -30px;
+    background-color: white;
+}
+
+.backLeftPaw {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: solid 5px gray;
+    z-index: 2;
+    position: relative;
+    left: 455px;
+    top: -10px;
+    background-color: gray;
+}
+
+.backRightPaw {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: solid 5px gray;
+    z-index: 2;
+    position: relative;
+    left: 505px;
+    bottom: 42px;
+    background-color: gray;
+}
+
+.tail {
+    width: 100px; 
+    height: 150px;  
+    border:solid 8px black;
+    border-color:transparent transparent transparent gray;
+    border-radius: 0px 0px 0px 60px;
+    z-index: 1;
+    position: relative;
+    left: 420px;
+    bottom: 235px;
+}
+
+.tailEnd {
+    width: 8px;
+    height: 6px;
+    border-radius: 5px;
+    border: solid 5px white;
+    z-index: 2;
+    position: relative;
+    left: 415px;
+    bottom: 400px;
+    background-color: white;
+}
+
+
