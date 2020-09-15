@@ -89,8 +89,13 @@ for(char in name) {
     console.log(fullName); // this will console log each iteration
 }
 //console.log(fullName); //this logs the final result of all iterations
+
 /*
-! look for instructor notes (did not have time to add during class)
+  1) We are taking the value of the "n" index and declaring the position of 0
+  2) We assign our empty varibale to equal that positioned value.
+  3) If that index is 0, we will take that value and run a ".toUpperCase()"" method on it. 
+  4) If the index is NOT 0, we still want to include it into our empty variable and utilize our += expression so it knows to add the next value (or n++).
+  5) If the index is NOT 0, we want t run a ".toLowerCase()" method so that all letters are in proper case.
 */
 
 /*
