@@ -61,31 +61,41 @@ let anon = function() {
 }
 anon();
 
-//! Challenge 2: Take Home Challenge
-/*  
-Create a switch statement that takes in a value (number) that represents a grade.  If it is True, console log that they are passing with the correct letter grade.
-*   A: 89-100
-*   B: 79-88
-*   C: 66-78
-*   D: 59-65
-*   F: 0-59
-*/
- 
-let grade = 100;
-switch(true){
+//? Parameters 
+//Allow us to accept information already declared.
 
-    case (grade >= 89 && grade <= 100):
-        console.log(`Great Job! Your grade is an A.`);
-        break;
-    case (grade < 89 &&  grade >= 79):
-        console.log(`Good Job! Your grade is a B.`);
-        break;
-    case (grade < 79 &&  grade >= 66):
-        console.log(`Keep going! Your grade is a C.`);
-        break;
-    case (grade < 66 &&  grade >= 59):
-        console.log(`Keep trying, you can do this! Your grade is a D.`);
-        break;
-    case (grade < 59):
-        console.log(`I believe in you! Let's talk. Your grade is a F.`);
+function parameterFunc(num) {
+    //num is a placeholder
+        console.log(num);
 }
+
+parameterFunc(4);
+parameterFunc(5);
+parameterFunc(9);
+parameterFunc(100);
+
+let returnedVal = 5;
+parameterFunc(returnedVal);
+
+
+let firstName = "Jane";
+let lastName = "Doe";
+
+function greeting(first, last){
+    //first is a placeholder in the 1st position and last is a placeholder in the 2nd positions
+    console.log(`Hi,${first}! Welcome back!`);  
+    //looking at position 1
+    console.log(`This is the first parameter: ${first}`);  
+    //looking at position 1
+    console.log(`This is the last parameter: ${last}`);  
+    //looking at position 2
+}
+
+// greeting(firstName); 
+    //looking at position 1
+// greeting(lastName);
+    //looking at position 1
+greeting(firstName, lastName);
+    //looking at position 1, position 2
+//greeting(firstName, null);
+//greeting('', lastName);
