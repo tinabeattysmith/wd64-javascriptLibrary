@@ -6,7 +6,7 @@
 Functions are a processes that we call upon to run an actoin.
     - Take in input so that it can process it, modify it or just respond to to.
     - Returns a value (but not always)
-    - Can be involed (called upon) as often as we need
+    - Can be invoked (called upon) as often as we need
 */
 
 // 1      (2)
