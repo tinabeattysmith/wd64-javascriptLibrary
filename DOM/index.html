@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Intro to DOM Manipulation</title>
+</head>
+<body>
+    <!--
+        DOM: Document Object Model
+            Allows our JS to interact with HTML and CSS.
+            Is an object-oriented representation of a web page, which can be modified by JS.
+            
+        Two primary areas:
+        1. Making a model of an HTML page
+            - when the browser loads a webpage, it creates a model of the page in memory.
+            -The DOM specifies the way in which the browser should structure the model in what is called the DOM tree.  The DOM is called an object model because the DOM tree is made up of objects.
+        2.  Accessing and change the HTML page
+            - the DOM also provides methods and properties to access and update each object in the module, which in turn updates what the user sees in the browwer.
+
+       ?    ACCESSING
+            COMMON METHODS FOR ACCESSING A SINGLE ELEMENT:
+                    -getElementByID()
+                    -querySelector()
+
+            COMMON METHODS FOR ACCESSING MULITPLE ELEMENTS:
+                    -querySelectorAll()
+                    -getElementByClassName()
+                    -getElementByTarget()
+        
+        ?   MANIPULATING
+            COMMON METHODS FOR WORKING WITH HTML CONTENT
+                - innerHTML
+                - textContent
+                - createElement
+            
+            COMMON METHODS FOR WORKIGN WITH TAG ATTRIBUTES
+                - className / Id
+                - setAttribute()
+                - getAttribute()    
+    -->
+
+    <h1>Hello World</h1>
+
+<!-- ! -- 1:  getElementByID -->
+
+<p id= "testParagraph">Sample Text </p>
+
+<!-- ! -- 2: query selector all / innertext/innerhtml -->
+<p class="sampleClass">A Class paragraph</p>
+<p class="sampleClass">A Class paragraph</p>
+<p class="sampleClass">A Class paragraph</p>
+<p class="sampleClass">A Class paragraph</p>
+<!--emmet p.sampleclass*4-->
+
+
+
+<span id="spanTest">Hello <span style="display:none">World!</span></span>
+<!-- JavaScript tags.  Placed towards bottom of body tag-->
+ <br> 
+ <hr>
+ 
+ 
+ <!-- ! 3: addEventListener -->
+    <button id = 'clickThis'>CLICK!</button>
+    <br> 
+    <hr>
+
+
+<!-- ! 4: keyup-->
+<label for="nameInput">Enter Your Name:</label>
+<br>
+<input type="text" id="nameInput" placeholder="Your Name Here">
+
+
+
+
+
+
+<!-- My JS -->
+    <script src="script.js">
+     //console.log('JS stuff here')
+    </script>
+</body>
+</html>

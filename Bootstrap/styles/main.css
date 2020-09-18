@@ -4,3 +4,10 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+footer {
+    margin-top:2em;
+    padding: .5em;
+    height: 10vh;
+    text-align: center;
+}
