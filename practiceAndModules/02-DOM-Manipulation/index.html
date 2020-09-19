@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <!-- All of our HTML code will go here -->
+    <h1>Hello World!</h1>
+    <p id="testParagraph">sample text</p>
+    <p class="sampleClass">This paragraph has a class of 'sampleClass'</p>
+    
+    <!-- Add a button-->
+    <button id="clickThisButton">I want to be clicked</button>
+
+    <br>
+    <br>
+    <hr>
+
+    <!-- Add an input field-->
+    <label for="nameInput">Enter Your Name:</label>
+    <input type="text" id="nameInput" placeholder="John Smith" />
+    <p>Welcome!</p>
+    <p>No name has been entered</p>
+
+
+
+    <script type="text/javascript">
+    /* All of our JavaScript code will go here */
+        var x = 10;
+            console.log(x);
+
+        document.getElementById("testParagraph").style.color = 'blue';
+        //console.log(document.getElementById("testParagraph").style.color);
+        
+        
+    // querySelectorAll and innerText/innerHTML
+
+        document.querySelectorAll("p.sampleClass")[0].innerText = "My text was changed!";// only updates what is displayed on the page
+        console.log(document.querySelectorAll("p.sampleClass"));
+        document.querySelectorAll("p.sampleClass")[0].innerHTML = "<span>I am whole new element!</span>";
+        
+    //  addEventListener for the button
+        // When button is clicked, "I was clicked!" is written to the console log.
+        document.getElementById('clickThisButton').addEventListener('click', () => {
+        console.log('I was clicked!');
+        });
+
+        // When the button is clicked, the event (mouseclick) is written to the console.
+        document.getElementById('clickThisButton').addEventListener('click', (details) => {
+        console.dir(details);
+        });
+
+        // turn button red when clicked.
+        document.getElementById('clickThisButton').addEventListener('click', (event) => {
+        event.target.style.backgroundColor = 'red';
+        });
+
+        document.getElementById('nameInput').addEventListener('keyup', (event) => {
+            console.log(event);          
+        });
+
+        document.getElementById('nameInput').addEventListener('keyup', (event) => {
+        console.log(event.target.value);
+        });
+
+        document.getElementById('nameInput').addEventListener('keyup', (event) => {
+        console.log(event.target.value);
+        console.log(document.getElementsByTagName("p"));
+        });
+
+        // display text written in box in the "No name has been entered <p> tag".
+        document.getElementById('nameInput').addEventListener('keyup', (event) => {
+            document.getElementsByTagName("p")[3].innerText = `Every please welcome ${event.target.value} to the stage.`;
+        });
+
+
+    </script>
+
+</body>
+</html>
