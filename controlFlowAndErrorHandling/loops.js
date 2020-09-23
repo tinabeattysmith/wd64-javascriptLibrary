@@ -51,16 +51,16 @@ for(i; i <= x; i++) {
 * *************
 */
 
-let city = {  // object called city.
-    name: 'Indianapolis', //key of city
-    pop: 877000, //key of city
-    speedway: true //key of city
-};
+    let city = {  // object called city.
+        name: 'Indianapolis', //key of city
+        pop: 877000, //key of city
+        speedway: true //key of city
+    };
 
-for(info in city) { //info is variable
-    console.log(info)
-    console.log(city[info]);
-}
+    for(info in city) { //info is variable
+        console.log(info)
+        console.log(city[info]);
+    }
 
 /*  for( variable IN object) {
         <statement>
@@ -125,7 +125,7 @@ for(pos of indexArr) {
 
 /*
 ? Quick Recap:
-flor loop:  loops through a block fo code until the counter reaches a specified number
+for loop:  loops through a block fo code until the counter reaches a specified number
 for in: loops though properties of an object
 for of: loops over iterable objects as any arrays and strings *strings can be accessed much in the same wasy as arrays
 */

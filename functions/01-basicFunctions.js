@@ -3,7 +3,7 @@
 ! Functions
 * ************
 
-Functions are a processes that we call upon to run an actoin.
+Functions are a process that we call upon to run an action.
     - Take in input so that it can process it, modify it or just respond to to.
     - Returns a value (but not always)
     - Can be invoked (called upon) as often as we need
@@ -99,3 +99,4 @@ greeting(firstName, lastName);
     //looking at position 1, position 2
 //greeting(firstName, null);
 //greeting('', lastName);
+
