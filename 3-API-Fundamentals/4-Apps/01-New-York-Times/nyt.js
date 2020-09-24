@@ -18,10 +18,10 @@ const nav = document.querySelector('nav');
 const section = document.querySelector('section');
 
 
-nav.style.display = 'none';
-// sets page number to default of 0
-let pageNumber = 0;
-let displayNav = false;
+nav.style.display = 'none'; // prevents the buttons from displaying when loading the page
+let pageNumber = 0;  // sets page number to default of 0
+//console.log('Page Number:', pageNumber) // checking page number
+//let displayNav = false;  // never used
 
 searchForm.addEventListener('submit', fetchResults);
 nextBtn.addEventListener('click', nextPage);
@@ -33,7 +33,7 @@ function fetchResults(e){
     e.preventDefault();
     //ASSEMBLE the FULL URL 
     url = baseURL + '?api-key=' + key + '&page=' + pageNumber + '&q=' + searchTerm.value;
-    console.log('URL:' , url);
+    //console.log('URL:' , url);
 
     // conditional statements for the start and end dates
     if(startDate.value !== '') {
@@ -58,84 +58,96 @@ function fetchResults(e){
         }
     
     function displayResults(json) {
-        //console.log("DisplayResults", json);
+        let articles = json.response.docs;
+        console.log("DisplayResults", json);
         while (section.firstChild) {
             section.removeChild(section.firstChild);  //this is checking to see if section already has child elements(results are populated.  If the resonse is true, then the removechild clears any existing child elements.)
-        }
-        let articles = json.response.docs;
-            //console.log(articles);
-            if(articles.length === 10) {
-                nav.style.display = 'block'; // shows the navigation buttons if 10 items returned in the array.
-            } else {
-                nav.style.display = 'none'; // hides the navigation buttons if less than 10 items are returned in the array.
+            }  
+            /*if(articles.length === 10) {
+                /*nav.style.display = 'block'; //shows the nav display if 10 items are in the array.  
+                } else {
+                    nav.style.display = 'none'; //hides the nav display if less than 10 items are in the array.
+                };     */ 
+        
+        // Only display next button when response includes 10 and pageNumber = 0.
+        if(articles.length === 10 && pageNumber == 0) {
+                nav.style.display = 'block';
+                previousBtn.style.display = 'none';        
             }
+        
+        // Display both next and previous buttons when response includes 10 and pageNumber > 0.
+        if(articles.length === 10 && pageNumber > 0) {
+                nav.style.display = 'block';
+                previousBtn.style.display = 'block';        
+            }
+         
+        //Display only previous buttons when response includes < 10 and pageNumber > 0.   
+        /*if(articles.length < 10 && pageNumber > 0) {
+            nav.style.display = 'block';
+            nextBtn.style.display = 'none';
+            }*/
+            //? This is working until the next button disappears.  Then it remains gone.  future challenge for myself.
 
-            if(articles.length === 0) {
-                console.log("No Results");
-            }   else {
-                    for(let i = 0; i < articles.length; i++) {
-                        //console.log(i); // checking to see loop is working
+        if(articles.length === 0) {
+            console.log("No Results");
+            } else {
+                for(let i = 0; i < articles.length; i++) {
+                    //console.log(i); // checking to see loop is working
 
-                        let article = document.createElement('article');
-                        let heading = document.createElement('h2');
-                        let link = document.createElement('a');
-                        let img = document.createElement('img');
-                        let para = document.createElement('p');
-                        let clearfix = document.createElement('div');
+                    let article = document.createElement('article');
+                    let heading = document.createElement('h2');
+                    let link = document.createElement('a');
+                    let img = document.createElement('img');
+                    let para = document.createElement('p');
+                    let clearfix = document.createElement('div');
+        
+                    let current = articles[i];
+                        //console.log("Current:", current);
+
+                    link.href = current.web_url;
+                    link.textContent = current.headline.main;
+                    link.target = "blank";
+
+                    para.textContent = 'keywords: ';
+
+                    for(let j=0; j < current.keywords.length; j++) {
+                        let span = document.createElement('span');
+                        span.textContent += current.keywords[j].value + ' ';
+                        para.appendChild(span);
+                    }
+
+                    if(current.multimedia.length > 0) {
+                        img.src = 'http://www.nytimes.com/' + current.multimedia[0].url;
+                        img.alt = current.headline.main;
+                     }
+
+                    clearfix.setAttribute('class', 'clearfix');
             
-                        let current = articles[i];
-                            //console.log("Current:", current);
-
-                        link.href = current.web_url;
-                        link.textContent = current.headline.main;
-
-                        para.textContent = 'keywords: ';
-
-                        for(let j=0; j < current.keywords.length; j++) {
-                            let span = document.createElement('span');
-                            span.textContent += current.keywords[j].value + ' ';
-                            para.appendChild(span);
-                        }
-
-                        if(current.multimedia.length > 0) {
-                            img.src = 'http://www.nytimes.com/' + current.multimedia[0].url;
-                            img.alt = current.headline.main;
-                        }
-
-                        clearfix.setAttribute('class', 'clearfix');
-                
-                        article.appendChild(heading);
-                        heading.appendChild(link);
-                        article.appendChild(img);
-                        article.appendChild(para);
-                        article.appendChild(clearfix);
-                        section.appendChild(article);
+                    article.appendChild(heading);
+                    heading.appendChild(link);
+                    article.appendChild(img);
+                    article.appendChild(para);
+                    article.appendChild(clearfix);
+                    section.appendChild(article);
             }
         }
     };
 
 function nextPage(e) {
-    //console.log("Next button clicked");
+    //console.log("Next button clicked");  // checking to see button is connected
     pageNumber++;
     fetchResults(e);
-    console.log('Page Number:', pageNumber); // ?only console logs after button is clicked.  Why?   
+        //console.log('Page Number:', pageNumber);
 };
 
+
 function previousPage(e) {
-    //console.log("Previous button clicked");
+    //console.log("Previous button clicked");  // checking to see button is connected
     if(pageNumber > 0) {
         pageNumber--;
-        fetchResults(e);    
     } else {
         return;
     }
     fetchResults(e);
-    console.log('Page Number:', pageNumber);
+    //console.log('Page Number:', pageNumber);
 };
-
-//! challenge
-//Try to come up with a way to show the previousBtn even if there is less than 10 items in the array, while hiding the nextBtn in this situation.
-//
-
-//! Bonus challenge
-//See if you can find a way to hide the previousBtn on first page of results!
