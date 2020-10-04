@@ -99,3 +99,78 @@ for({title, platforms} of games) {
         console.log(`${title} is on ${platforms[p]}`);
     }
 } 
+
+
+
+//destructure
+
+
+let weather = {
+	"status":"success",
+	"data":
+		{"city":"Indianapolis",
+		"state":"Indiana",
+		"country":"USA",
+		"location":
+			{"type":"Point","coordinates":[-86.2147,39.7889]},
+		"current":
+			{"weather":
+				{"ts":"2020-10-03T21:00:00.000Z",
+				"tp":16,
+				"pr":1021,
+				"hu":41,
+				"ws":2.1,
+				"wd":0,
+				"ic":"04d"},
+			"pollution":
+				{"ts":"2020-10-03T21:00:00.000Z",
+				"aqius":23,
+				"mainus":"p2",
+				"aqicn":8,
+                "maincn":"p2"}}}};
+                
+
+
+
+const {
+	"status": status,
+	"data":
+		{"city": city,
+		"state": state,
+		"country": country,
+		"location": 
+			{"type": locationType,"coordinates": locationCoordinates},
+        "current":{
+        "weather":  {
+            "ts": timestamp, 
+            "tp": temperature,
+				"pr":pressure,
+				"hu":humidity,
+				"ws":windspeed,
+				"wd":winddirection,
+				"ic":icon},
+		"pollution": {
+            "ts": pollTimeStamp,
+				"aqius":aqius,
+				"mainus":mainus,
+				"aqicn":aqicn,
+                "maincn":maincn}}}} = weather
+
+             
+function weatherNow ({
+    "ts": timestamp, 
+    "tp": temperature,
+        "hu":humidity,
+        "ws":windspeed,
+        "wd":winddirection,
+        "ic":icon})
+    {   
+       return({
+        "ts": timestamp, 
+        "tp": temperature,
+            "hu":humidity,
+            "ws":windspeed,
+            "wd":winddirection,
+            "ic":icon})}
+
+console.log(weather.data.current.weather.ic)
