@@ -17,29 +17,20 @@ let selectedCity;
 //targets the DOM element
 let state = document.getElementById("states");
 let cityList = document.getElementById("cities");
+let btnSubmit = document.getElementById("submit");
 
 
 function changeState() {
-    let selectedState = document.getElementById("states").value; 
+    selectedState = document.getElementById("states").value; 
     urlState = `${baseurl}cities?state=${selectedState}&country=${country}&key=${key}`
-}
+}// end changeState
 
-/*function submitCity() {
-    console.log(selectedCity)
-    let selectedCity = document.getElementById("cities").value; 
-    urlCity = `${baseurl}cities?city=${selectedCity}state=${selectedState}&country=${country}&key=${key}`
-} */  
-
-/*cityList.addEventListener("change", fetchResultsB);*/
-
-
-
+//when value in State drop down changes, fetchResults will trigger
 state.addEventListener("change", fetchResults);
 
-
-
+//get cities for selected state from api information
 function fetchResults(e) {
-   fetch(urlState)
+	fetch(urlState)
 		.then(function (result) {
 			return result.json();
 		})
@@ -47,24 +38,51 @@ function fetchResults(e) {
 			//console.log("JSON: ", json);
 			getCities(json)
 		});
-    };  // fetch results
+	};  // end fetchResults
 
-
-	function getCities(json) {
+   
+    function getCities(json) {
         cities = json.data;
+         //console.log(cities);
+         const [{"city" : city, }] = cities
+         //console.log(cityName)
+         for (let i = 0; i < cities.length; i++) { 
+            let current = cities[i]  
+            console.log(current.city)
+            let option = document.createElement("option")
+             option.value = current.city
+             option.innerHTML = current.city
+             cityList.add(option)
+            } // end cities for loop
+    }// end get cities
+
+//when value in city drop down changes, assembleCityUrl will trigger
+cityList.addEventListener("change", assembleCityUrl);   
+        function assembleCityUrl() {
+            let selectedCity = document.getElementById("cities").value; 
+            urlCity = `${baseurl}city?city=${selectedCity}&state=${selectedState}&country=${country}&key=${key}`
+        };  // end submitCity  
+
         
-        //console.log(cities);
-        const [{"city" : city, }] = cities
-        //console.log(cityName)
-        for (let i = 0; i < cities.length; i++) { 
-           let current = cities[i]  
-           console.log(current.city)
-           let option = document.createElement("option")
-            option.value = current.city
-            option.innerHTML = current.city
-            cityList.add(option)
-        }   
-    } 
+//when button clicked, fetchLocalWeather will trigger
+btnSubmit.addEventListener('click', fetchLocalWeather);     
+
+//get weather for selected state/city from api
+    function fetchLocalWeather(e) {
+        assembleCityUrl(); 
+        console.log(urlCity)
+        fetch(urlCity)
+            .then(function (result) {
+                return result.json();
+            })
+            .then(function (json) {
+                console.log("JSON: ", json);
+                getWeather(json)
+            });
+        };  // fetch results
 
 
- 
+    function getWeather(json) {
+        weather = json.data.current.weather;
+        console.log(weather);
+    };// end getWeather
