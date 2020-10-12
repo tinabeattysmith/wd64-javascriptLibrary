@@ -61,25 +61,10 @@ cityList.addEventListener("change", assembleCityUrl);
         function assembleCityUrl() {
             let selectedCity = document.getElementById("cities").value; 
             urlCity = `${baseurl}city?city=${selectedCity}&state=${selectedState}&country=${country}&key=${key}`
-        };  // end submitCity  
+        };  // end assembleCityUrl  
 
         
-//when button clicked, fetchLocalWeather will trigger
-btnSubmit.addEventListener('click', fetchLocalWeather);     
 
-//get weather for selected state/city from api
-    function fetchLocalWeather(e) {
-        assembleCityUrl(); 
-        console.log(urlCity)
-        fetch(urlCity)
-            .then(function (result) {
-                return result.json();
-            })
-            .then(function (json) {
-                console.log("JSON: ", json);
-                getWeather(json)
-            });
-        };  // fetch results
 
 
     function getWeather(json) {
