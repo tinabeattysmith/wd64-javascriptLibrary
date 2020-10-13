@@ -13,13 +13,15 @@ app.use('/api/test', function(req, res){
 });
 
 
-var test = require('./controllers/testcontroller')//1 importing the route object created
-       //2 1st parameter ('/test') is base url    //3 2nd parameter is the route object variable
+var test = require('./controllers/testcontroller')//1b importing the route object created
+       //2b 1st parameter ('/test') is base url    //3b 2nd parameter is the route object variable
 
 
 let sequelize = require('./db');
 
 sequelize.sync(); // tip:  pass in {force: true} for resetting tables
+
+app.use(express.json()); //1c
 
 app.use('/test', test)
 
