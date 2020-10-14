@@ -6,6 +6,6 @@ const testControllerRouter = Router();  //yanked the router and yeeted it over t
 testControllerRouter.get("/", (request, response) => {
     let message = "Hello from the test controller";
     response.send(message);
-});
+});  // if request type is GET and the specified endpoint matches, run the request-reponse cycle to respond withe the message.
 
-module.exports = testControllerRouter;
+module.exports = testControllerRouter; // exports the value of the testControllerRouter variable to the controllers index.js file.

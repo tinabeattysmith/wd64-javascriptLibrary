@@ -2,9 +2,9 @@ const { request } = require("express");
 const Express = require("express"); //constructor
 const applicationControllers = require("./controllers/index"); // brings in the controllers
 
-const expressApplicationObject = new Express(); // holding the express instance
+const expressApplicationObject = new Express(); // creating and holding an express instance
 
-expressApplicationObject.use('/test', applicationControllers.test);
+expressApplicationObject.use('/test', applicationControllers.test); //because application is using the body.parse function to parse out text in the body, middleware (express.json())is being used.  Middleware requires the use of the application.use() function.  The app.use() function parameters tell if the route is parameter1 (in this case /test) then call (run) parameter2 (in this case applicationControllers)
 
 
 expressApplicationObject.get('/', (request, response) => {// callback function.  if 1st parament is true, run the 2nd param
@@ -45,13 +45,13 @@ expressApplicationObject.get('/', (request, response) => {// callback function. 
     //?JSON in a request is a STRING     
    
     // Class solution
-    expressApplicationObject.use(Express.json());
-    expressApplicationObject.post("/challenge", (request, response) => {
-         let data = request.body;
-         let message = data.age >= 18 ? `${data.name}, you are an adult!` : `${data.name}, you will be an adult soon!`;
-         response.send(message);
+    expressApplicationObject.use(Express.json());// this is telling the application object to use the middleware express.json().
+    expressApplicationObject.post("/challenge", (request, response) => { //if rquest type is POST and endpoint matches, run the request-response cycle as defined below:
+         let data = request.body; // declares variable to hold body.
+         let message = data.age >= 18 ? `${data.name}, you are an adult!` : `${data.name}, you will be an adult soon!`;// this statement is a ternary.  it is an if/else statement.  after variable declarition, is the condition followed by ?, then the if statment followed by : then the else statment.
+         response.send(message); //this is the response to the request with endpoint
         });
     
 expressApplicationObject.listen(9001, () => {
-    console.log("[server]: App is listening on port 9001");
+    console.log("[server]: App is listening on port 9001"); // this tells the application to listen to the requests on a specified port.  It is logging a response so we know it is listening (true listening testing can be done in PostMan.)
 });
