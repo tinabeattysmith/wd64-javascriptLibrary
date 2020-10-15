@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router()
 var sequelize = require('../db');
-var TestModel = require('../models/test'); //1b
+var TestModel = sequelize.import('../models/test'); //1b
 
 /*************************
  * Controller Method #1: Simple Response

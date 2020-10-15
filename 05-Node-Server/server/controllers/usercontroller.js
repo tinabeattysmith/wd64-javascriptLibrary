@@ -1,30 +1,30 @@
-var express = require('express');
-const { JsonWebTokenError } = require('jsonwebtoken');
-var router = express.Router(); 
-var sequelize = require('../db');
-var User = require('../models/user'); 
-var jwt = require('jsonwebtoken'); //imports the package
+const express = require('express');
+const router = express.Router();
+const sequelize = require('../db');
+const User = sequelize.import('../models/user');
+const jwt = require('jsonwebtoken');
 
-router.post('/createuser', function(req, res){
-    
-    var username = req.body.user.username; //refactored
-    var pass = req.body.user.password;  //refactored
+router.post('/createuser', function (req, res){
+    const username = req.body.user.username;
+    const pass = req.body.user.password;
 
-    User.create({
+    User.create
+    ({
         username: username,
         passwordhash: pass
 
-    }).then(//refactored
+    }).then(
         function createSuccess(user){
+            const token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: 60*60*24});
             res.json({
                 user: user,
-                message: "created"  //1-refactor
+                message: "created",
+                session: token
             });
         },
-        function createError(err) {
-            res.send(500, err.message);
+        function createError(err){
+            res.send(500, err.message)
         }
     );
 });
-
 module.exports = router;
