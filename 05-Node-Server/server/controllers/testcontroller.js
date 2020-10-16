@@ -114,3 +114,11 @@ router.post('/seven', function (req, res) {
             }
         );
 });
+
+/*************************
+ * GET: A simple message from server
+**************************/
+
+router.get('/helloclient', function(req, res) {
+    res.send('This is a message from the server to the client')
+})

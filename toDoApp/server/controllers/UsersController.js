@@ -1,4 +1,7 @@
 const { Router } = require('express');
+const bcrypt = require("bcrypt");
+
+const { user } = require("../Models/index");  //destructure index to pull in the key user
 const UsersControllerRouter = Router(); // creates a new instance of Router
 
 //CRUD-DY CODE FOR USERS
@@ -20,9 +23,30 @@ UsersControllerRouter.post('/register', (request, response) => {
     //  Use that data to craft a USER
     //  Respond with the status of the action
 
-    response.json({
-        message: "Hello from the user Register route!"
-    })
+    let { email, password } = request.body  //object destructing.  Pull email and password from user object and store as variables email and password (the specified  variables)
+    let newUser = user.build({
+        email: email,
+        password: bcrypt.hashSync(password, 12),
+    });
+
+    newUser
+        .save()
+        .then(() => {
+            console.log("[server]: The new user was created");
+            response.json({
+                message:  "User successfully created"
+            });
+        })
+        .catch(error => {
+            console.log(error)
+            response.status(500).json({
+                message:  "Failed to create user"
+            });
+        });
+
+    //response.json({
+    //    message: "Hello from the user Register route!"
+    //})
 })
 
 UsersControllerRouter.post('/Login', (request, response) => {

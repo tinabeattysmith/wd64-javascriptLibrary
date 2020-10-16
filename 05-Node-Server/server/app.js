@@ -8,8 +8,11 @@ var user = require('./controllers/usercontroller');
 var sequelize = require('./db');
 
 sequelize.sync(); // tip:  pass in {force: true} for resetting tables
-
 app.use(express.json());
+
+//ADD MIDDLEWARE HEADERS //! THIS MUST COME BEFORE ROUTES ARE DECLARED
+app.use(require('./middleware/headers'))// activating the middleware headers exported from headers.js
+
 
 app.use('/test', test);
 app.use('/api/test', function(req, res){
