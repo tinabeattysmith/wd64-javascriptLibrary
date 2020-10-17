@@ -21,7 +21,7 @@ router.post('/createuser', function (req, res){
             res.json({
                 user: user,
                 message: "created",
-                session: token
+                sessionToken: token
             });
         },
         function createError(err){
@@ -40,7 +40,7 @@ router.post('/signin', function (req, res) {
                         res.json({
                             user: user,
                             message: "successfully authenticated",
-                            session: token
+                            sessionToken: token
                         });
                     } else {
                         res.status(502).send({error: "yoo failed, yo"});
