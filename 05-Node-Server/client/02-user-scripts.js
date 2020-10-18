@@ -25,3 +25,31 @@ function userSignUp(){
         localStorage.setItem('SessionToken', token); //This will keep our token safely stored in our local window
     });
 }
+
+
+/******************
+ * POST - /user/signIn 
+*******************/
+
+function userSignIn(){
+    let userName = document.getElementById('userSignin').value;
+    let userPass = document.getElementById('passSignin').value;
+    console.log(userName, userPass);
+
+
+    let userData = {user: { username: userName, password: userPass}};
+    fetch('http://localhost:3000/user/signIn', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData) 
+    })
+    .then(response => response.json())
+    .then(function (response) {
+        console.log(response)
+        console.log(response.sessionToken);
+        let token = response.sessionToken; //We get the sessionToken from the response and store it in a token variable.
+        localStorage.setItem('SessionToken', token); //This will keep our token safely stored in our local window
+    });
+}
