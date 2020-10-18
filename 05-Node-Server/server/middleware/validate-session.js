@@ -6,7 +6,7 @@ module.exports = function(req, res, next) {
     if (req.method == 'OPTIONS') {
         next()
     } else {
-        var sessionToken = req.header.authorization;  //created to hold token which is pulled from the authorization header of the incoming request
+        var sessionToken = req.headers.authorization;  //created to hold token which is pulled from the authorization header of the incoming request
         //console.log(sessionToken) //for debugging to verify token is being sent to the server.  //!REMOVE
             if (!sessionToken) return res.status(403).send({auth: false, message: 'No token provided'});//if no token present, return error.
             else { //no user property is ever provided in request.  Ensure you are who you say you are.  Prevents using token assigned to another user.

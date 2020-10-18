@@ -9,13 +9,13 @@ const jwt = require('jsonwebtoken');
 router.post('/createuser', function (req, res){
     var username = req.body.user.username;
     var pass = req.body.user.password;
-
-    User.create
+        User.create
     ({
         username: username,
         passwordhash: bcrypt.hashSync(pass, 10)
 
-    }).then(
+    })
+    .then(
         function createSuccess(user){
             const token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: 60*60*24});
             res.json({
