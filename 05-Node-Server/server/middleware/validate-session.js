@@ -1,14 +1,13 @@
-const jwt = require('jsonwebtoken');
-const sequelize = require('sequelize');
-const Sequelize = require('../db');
-const User = require('../models/user');
+var jwt = require('jsonwebtoken');
+var Sequelize = require('../db');
+var User = require('../models/user')(Sequelize, require('sequelize'));
 
 module.exports = function(req, res, next) {
     if (req.method == 'OPTIONS') {
         next()
     } else {
-        var sessionToken = req.headers.authorization;  //created to hold token which is pulled from the authorization header of the incoming request
-        console.log(sessionToken) //for debugging to verify token is being sent to the server.  //!REMOVE
+        var sessionToken = req.header.authorization;  //created to hold token which is pulled from the authorization header of the incoming request
+        //console.log(sessionToken) //for debugging to verify token is being sent to the server.  //!REMOVE
             if (!sessionToken) return res.status(403).send({auth: false, message: 'No token provided'});//if no token present, return error.
             else { //no user property is ever provided in request.  Ensure you are who you say you are.  Prevents using token assigned to another user.
                 jwt.verify(sessionToken, process.env.JWT_SECRET, (err, decoded) => { //decodes the token with provided secret, send callback with two variables

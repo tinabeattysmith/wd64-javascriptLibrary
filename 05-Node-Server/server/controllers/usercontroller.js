@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const sequelize = require('../db');
-const User = sequelize.import('../models/user');
+const Sequelize = require('../db');
+var User = require('../models/user')(Sequelize, require('sequelize'));
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 
 router.post('/createuser', function (req, res){
-    const username = req.body.user.username;
-    const pass = req.body.user.password;
+    var username = req.body.user.username;
+    var pass = req.body.user.password;
 
     User.create
     ({

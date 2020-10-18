@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const sequelize = require('sequelize');
+//const sequelize = require('sequelize');
 const Sequelize = require('../db');
-const User = require('../models/user');
-const AuthTestModel = require('../models/authtest');
+var User = require('../models/user')(Sequelize, require('sequelize'));
+var AuthTestModel = require('../models/authtest')(Sequelize, require('sequelize'));
 
 /********************************
 GET ALL ITEMS FOR INDIVIDUAL USERS
@@ -34,8 +34,7 @@ router.post('/create', function (req, res) {
     var owner = req.user.id;
     var authTestData = req.body.authtestdata.item;
 
-    AuthTestModel
-        .create({
+    AuthTestModel.create({
             authtestdata: authTestData,
             owner: owner
         })
@@ -56,7 +55,7 @@ router.post('/create', function (req, res) {
 GET SINGLE ITEM FOR INDIVIDUAL USER
 **********************************/
 
-router.get('/id', function (req, res) {
+router.get('/:id', function (req, res) {
 
     var data = req.params.id;
     var userid = req.user.id;
@@ -115,8 +114,9 @@ router.put('/update/:id', function (req, res) {
                 //First argument of update. Contains an object holding the new value we want to edit into the database.
                 //Second argument of update. Tells Sequelize where to place the new data if a match is found.
             authtestdata: authtestdata,
-        })
-        .then(
+        },
+        {where: {id: data}}
+        ).then(
             function updateSuccess(updateLog) {
                 res.json({
                     authtestdata: authtestdata 
