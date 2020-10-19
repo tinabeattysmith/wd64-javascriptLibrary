@@ -1,6 +1,5 @@
-/******************
- * POST - /createuser 
-*******************/
+
+
 function userSignUp(){
     //grab the value of the user/password data from the createuser input field in the index.html file
     let userName = document.getElementById('userSignUp').value;
@@ -53,3 +52,12 @@ function userSignIn(){
         localStorage.setItem('SessionToken', token); //This will keep our token safely stored in our local window
     });
 }
+
+/*************************
+ *Helper function for token 
+***************************/
+function getSessionToken(){
+    var data = localStorage.getItem('SessionToken');
+    console.log(data);
+    return data;
+};
