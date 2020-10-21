@@ -10,6 +10,8 @@ const middlewares = require("./middlewares");
 // Import controllers as a bundle
 const controllers = require("./controllers");
 
+app.use(middlewares.CORS);
+
 // Parse the body of all requests as JSON
 app.use(Express.json());
 
