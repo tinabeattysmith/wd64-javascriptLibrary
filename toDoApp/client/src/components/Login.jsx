@@ -64,7 +64,7 @@ const LoginComponent = (props) => {
             <Button>Login</Button>
             </Form>
         </div>
-    )
+    );
 };
 
 //module.exports = LoginComponent;
