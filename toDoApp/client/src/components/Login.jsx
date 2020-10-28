@@ -1,7 +1,7 @@
 // const React = require('react')  same as import statement below
 import React, { useState } from 'react'; //short hand.  Browsers not utilizing ES6 do not play well
 import { Button, Form, FormGroup, Label, Input} from 'reactstrap'
-
+import "../styles/Login.css";
 //TODO: Build functionality to send infor to the api
 //challenge
 //create 2 state variables and wire up the two input fields with the state variables.
@@ -51,7 +51,7 @@ const LoginComponent = (props) => {
     
     return (
         <div>
-            <Form onSubmit={handleloginSubmit}>
+            <Form className="authForm" id="loginForm" onSubmit={handleloginSubmit}>
             <h3>Login</h3>
             <FormGroup>
                 <Label htmlFor="email">Email</Label>

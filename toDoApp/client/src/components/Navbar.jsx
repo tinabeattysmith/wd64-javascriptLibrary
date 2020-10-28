@@ -19,39 +19,33 @@ const NavBarComponent= (props) => {
     return (
         <Navbar color="light" light>
         <NavbarBrand>ToDo</NavbarBrand>
-            <NavbarToggler onClick={ toggleNavBarMenu }/>
+            <NavbarToggler onClick={toggleNavBarMenu}/>
             <Collapse isOpen={isOpen} navbar>
                 <Nav className="ml-auto" navbar>
-                    {
-                       props.isLoggedIn
-                        ? (
-                            <>
-                                <NavItem>
-                                    <p>Lists</p>
-                                </NavItem>
-                                <NavItem>
-                                    <p>Logout</p>
-                                </NavItem>
-                            </>
-                        )
-                        : (
-                            <>
-                                <NavItem>
-                                    <Link to="/login">Login</Link>
-                                </NavItem>
-                                <NavItem>
-                                    <Link to="/register">Register</Link>
-                                </NavItem>
-                            </>
-                        )
-                    }
-                  
-                 
+                    {/* the following is a ternary ? return the true (if) and : returns the false (else) */}
+                    {props.isLoggedIn ? (
+                        <> 
+                        {/*<></> is a jsx fragment */}
+                        <NavItem>
+                            <Link to="/mylists">My Lists</Link>
+                        </NavItem>
+                        <NavItem>
+                            <p>Logout</p>
+                        </NavItem>
+                        </>
+                        ) : (
+                        <>
+                        <NavItem>
+                            <Link to="/login">Login</Link>
+                        </NavItem>
+                        <NavItem>
+                            <Link to="/register">Register</Link>
+                        </NavItem>
+                        </>
+                     )}       
                 </Nav>
             </Collapse>
         </Navbar>
     );
 };
-
-
 export default NavBarComponent;

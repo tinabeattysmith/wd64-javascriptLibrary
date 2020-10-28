@@ -9,9 +9,10 @@ import './App.css';
 import LoginComponent from './components/Login'
 import NavBarComponent from './components/Navbar'
 import RegisterComponent from './components/Register'
+import ListsComponent from './components/Lists';
 
 function App() {
-
+  // private to App.jsx only.  Must provide function to other components that it can be updated. 
   const [ authenticationJWT, changeAuthJWT ] = useState("");
 
   /*
@@ -20,10 +21,10 @@ function App() {
     2) If you have an empty array in the useEffect, it will fire only when the component is first MOUNTED to the screen.
     3) if you include a dependency in the array, it will fire when that dependency IS UPDATED
   */
- // If the user had logged in
+ // If the user had logged in go to browser local storage and pull token.
   useEffect(() => {
     if(window.localStorage.getItem('authToken')){
-      console.log("abc")
+      //console.log("abc")
       changeAuthJWT(window.localStorage.getItem('authToken'));
     }
   }, [])
@@ -46,6 +47,9 @@ function App() {
           </Route>
           <Route exact path="/register">
             <RegisterComponent />
+          </Route>
+          <Route exact path="./myLists">
+            <ListsComponent token={authenticationJWT}/>
           </Route>
         </Switch>
       </div>    

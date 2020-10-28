@@ -7,6 +7,8 @@ import {
     Input,
 } from 'reactstrap';
 
+import "../styles/register.css"
+
 // functional component
 const RegisterComponent = (props) => {
     const [ email, setEmail] = useState("");
@@ -54,9 +56,9 @@ const RegisterComponent = (props) => {
     // Think about how to handle a token
 
     return (
-        <div id="registerForm">
+        <div className="authForm" id="registerForm">
             <Form onSubmit={handleUserRegister}>
-                <h3>Please register by completing the information below.</h3>    
+                <h3>Register by completing the information below.</h3>    
                 <FormGroup>
                     <Label htmlFor="registerEmail">Email:</Label>
                     <Input onChange={triggerEmailInputChange} value={email} id="registerEmail" type="email" name="registerEmail" />
